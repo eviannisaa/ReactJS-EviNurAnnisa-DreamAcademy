@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <link
+         rel="stylesheet"
+         href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      />
+      <link rel="stylesheet" href="e-learning.css" />
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   </head>
+   <body>
+      <nav>
+         <div class="d-flex row c-gap-xs justify-center">
+            <img class="logo" src="assets/img/logo.png" alt="" />
+            <h3>E-Learning</h3>
+         </div>
+         <ul class="menu fa-ul">
+            <li class="item"><i class="fa fa-tachometer-alt"></i>Dashboard</li>
+            <li class="item"><i class="fa fa-book-reader"></i>My Class</li>
+            <li class="item">
+               <i class="fa fa-chalkboard-teacher"></i> Instractors
+            </li>
+            <li class="item"><i class="fa fa-lightbulb"></i>Courses</li>
+            <li class="item"><i class="fa fa-comments"></i>Group Chats</li>
+            <li class="item"><i class="fa fa-cog"></i>Settings</li>
+         </ul>
+         <div class="btn-join">
+            <img src="assets/img/join.png" alt="" class="btn-nav" />
+            <button class="btn-join-course">Join Course</button>
+         </div>
+      </nav>
+
+      <section class="wrapper">
+         <div class="top">
+            <div class="btn-search">
+               <input type="search" placeholder="Search for query" />
+               <i class="fa fa-search"></i>
+            </div>
+            <div class="d-flex row c-gap-lg">
+               <div class="d-flex row c-gap-sm">
+                  <button style="position: relative">
+                     <i class="fa fa-envelope"></i>
+                     <div class="notif"></div>
+                  </button>
+                  <button style="position: relative">
+                     <i class="fa fa-bell"></i>
+                     <div class="notif-bell"></div>
+                  </button>
+               </div>
+
+               <div class="d-flex row c-gap-xs">
+                  <img
+                     class="profile-img"
+                     src="assets/img/profile.png"
+                     alt=""
+                  />
+                  <span>
+                     Madhu <br />
+                     <span class="font-xs" style="color: gray">@madu_UX</span>
+                  </span>
+               </div>
+            </div>
+         </div>
+
+         <content>
+            <h3>Analytics Overview</h3>
+            <div class="content">
+               <div>
+                  <div class="d-flex column" style="align-items: flex-start">
+                     <span class="font-lg"
+                        >Learn With Effectively With Us!
+                     </span>
+                     <span class="font-sm"
+                        >Get 30% off every course on January
+                     </span>
+                  </div>
+
+                  <img
+                     class="content-img"
+                     src="assets/img/analytics.png"
+                     alt=""
+                  />
+               </div>
+               <div class="user-course">
+                  <div class="d-flex row c-gap-sm">
+                     <img
+                        class="student-img"
+                        src="assets/img/student.png"
+                        alt=""
+                     />
+                     <div>
+                        <span class="font-sm">Studenst</span> <br />
+                        <span class="font-xs">65,000+</span>
+                     </div>
+                  </div>
+                  <div class="d-flex row c-gap-sm">
+                     <img
+                        class="mentor-img"
+                        src="assets/img/teacher.png"
+                        alt=""
+                     />
+                     <div>
+                        <span class="font-sm">Expert Mentors</span> <br />
+                        <span class="font-xs">250+</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <aside>
+               <div class="popular-courses">
+                  <div class="d-flex row justify-between">
+                     <h4>Popular Courses</h4>
+                     <form action="">
+                        <select name="cars" id="cars">
+                           <option value="volvo">All Courses</option>
+                           <option value="saab">Saab</option>
+                        </select>
+                     </form>
+                  </div>
+                  <div class="box-categories">
+                     <div class="categories">
+                        <div class="detail-categories">
+                           <span class="icon-categories">U</span>
+                           <div class="font-xs">
+                              <strong> UI/UX Design</strong>
+                              <br />
+                              <span> 30+ Courses</span>
+                           </div>
+                        </div>
+                        <div class="d-flex row c-gap-xs">
+                           <button class="btn-view">View Course</button>
+                           <i class="fa fa-ellipsis-v"></i>
+                        </div>
+                     </div>
+                     <div class="categories">
+                        <div class="detail-categories">
+                           <span class="icon-categories">M</span>
+                           <div class="font-xs">
+                              <strong>Marketing</strong>
+                              <br />
+                              <span> 25+ Courses</span>
+                           </div>
+                        </div>
+                        <div class="d-flex row c-gap-xs">
+                           <button class="btn-view">View Course</button>
+                           <i class="fa fa-ellipsis-v"></i>
+                        </div>
+                     </div>
+                     <div class="categories">
+                        <div class="detail-categories">
+                           <span class="icon-categories">W</span>
+                           <div class="font-xs">
+                              <strong>Web Development</strong>
+                              <br />
+                              <span> 45+ Courses</span>
+                           </div>
+                        </div>
+                        <div class="d-flex row c-gap-xs">
+                           <button class="btn-view">View Course</button>
+                           <i class="fa fa-ellipsis-v"></i>
+                        </div>
+                     </div>
+                     <div class="categories">
+                        <div class="detail-categories">
+                           <span class="icon-categories">M</span>
+                           <div class="font-xs">
+                              <strong>Mathematics</strong>
+                              <br />
+                              <span> 50+ Courses</span>
+                           </div>
+                        </div>
+                        <div class="d-flex row c-gap-xs">
+                           <button class="btn-view">View Course</button>
+                           <i class="fa fa-ellipsis-v"></i>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div>
+                  <h4>Current Activity</h4>
+                  <div class="chart">
+                     <div class="d-flex row c-gap-lg">
+                        <div class="detail-chart">
+                           <span>Monthly Progress</span> <br />
+                           <span
+                              style="
+                                 color: var(--light);
+                                 font-weight: 400;
+                                 font-size: 12px;
+                              "
+                              >This is the latest improvement</span
+                           >
+                        </div>
+                        <i class="fa fa-calendar-alt"></i>
+                     </div>
+
+                     <div>
+                        <canvas id="myChart"></canvas>
+                     </div>
+                  </div>
+
+                  <div class="d-flex row c-gap-xs">
+                     <div class="box-activity">
+                        <span class="detail-chart">45K+</span>
+                        <span
+                           style="
+                              color: var(--light);
+                              font-weight: 400;
+                              font-size: 12px;
+                           "
+                           >Completed Course</span
+                        >
+                        <div
+                           class="d-flex row c-gap-sm"
+                           style="margin-top: 10px"
+                        >
+                           <div class="range" style="row-gap: 10px">
+                              <div class="range1"></div>
+                              <div class="range2"></div>
+                              <div class="range3"></div>
+                           </div>
+                           <button class="btn-arrow">
+                              <i class="fa fa-arrow-up"></i>
+                           </button>
+                        </div>
+                     </div>
+                     <div
+                        class="box-activity"
+                        style="background-color: var(--primary)"
+                     >
+                        <span class="detail-chart">20K</span>
+                        <span
+                           style="
+                              color: var(--light);
+                              font-weight: 400;
+                              font-size: 12px;
+                           "
+                           >Video Courses</span
+                        >
+                        <div
+                           class="d-flex"
+                           style="justify-content: flex-end; margin-top: 15px"
+                        >
+                           <button class="btn-arrow">
+                              <i class="fa fa-play"></i>
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div style="width: 75%">
+                  <div style="width: max-content">
+                     <div class="d-flex row justify-between">
+                        <h4>Best Instructors</h4>
+                        <a href="">See All</a>
+                     </div>
+
+                     <div class="box-instructors">
+                        <div class="d-flex row c-gap-sm detail-box-intstr">
+                           <div class="instructors">
+                              <img
+                                 class="instructors-img"
+                                 src="assets/img/photo-user.png"
+                                 alt=""
+                              />
+                              <div class="font-sm">
+                                 Abdullah <br />
+                                 <span class="font-xs">5 Design Course</span>
+                              </div>
+                           </div>
+                           <button class="btn-view" style="padding: 10px">
+                              Courses
+                           </button>
+                        </div>
+                        <div class="d-flex row c-gap-sm detail-box-intstr">
+                           <div class="instructors">
+                              <img
+                                 src="assets/img/photo-user.png"
+                                 alt=""
+                                 class="instructors-img"
+                              />
+                              <div class="font-sm">
+                                 Abdullah <br />
+                                 <span class="font-xs">5 Design Course</span>
+                              </div>
+                           </div>
+                           <button class="btn-view" style="padding: 10px">
+                              Courses
+                           </button>
+                        </div>
+                        <div class="d-flex row c-gap-sm detail-box-intstr">
+                           <div class="instructors">
+                              <img
+                                 src="assets/img/photo-user.png"
+                                 alt=""
+                                 class="instructors-img"
+                              />
+                              <div class="font-sm">
+                                 Abdullah <br />
+                                 <span class="font-xs">5 Design Course</span>
+                              </div>
+                           </div>
+                           <button class="btn-view" style="padding: 10px">
+                              Courses
+                           </button>
+                        </div>
+                        <div class="d-flex row c-gap-sm detail-box-intstr">
+                           <div class="instructors">
+                              <img
+                                 src="assets/img/photo-user.png"
+                                 alt=""
+                                 class="instructors-img"
+                              />
+                              <div class="font-sm">
+                                 Abdullah <br />
+                                 <span class="font-xs">5 Design Course</span>
+                              </div>
+                           </div>
+                           <button class="btn-view" style="padding: 10px">
+                              Courses
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </aside>
+         </content>
+      </section>
+
+      <script>
+         const labels = ["Jan", "Feb", "Mar", "Apr"];
+
+         const data = {
+            labels: labels,
+            datasets: [
+               {
+                  label: "My First dataset",
+                  backgroundColor: "rgb(255, 255, 255)",
+                  borderColor: "rgb(255, 255, 255)",
+                  data: [0, 10, 5, 2, 20, 30],
+               },
+            ],
+         };
+
+         const config = {
+            type: "line",
+            data: data,
+            options: { plugins: { legend: { display: false } } },
+         };
+
+         Chart.defaults.color = "#fff";
+
+         var ctx = document.getElementById("myChart").getContext("2d");
+
+         // ctx.canvas.height = 100;
+         ctx.canvas.width = 70;
+
+         const myChart = new Chart(ctx, config);
+      </script>
+   </body>
+</html>
