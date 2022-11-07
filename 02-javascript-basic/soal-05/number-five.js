@@ -1,63 +1,48 @@
 function userName(name){
-   if(name?.length > 0 && name.length < 20){
-      console.log("Hallo", name)
-   }
-   else if(name?.length >= 20){
-      console.log("Panjang Umur Yang Mulia", name)
-   }
-   else{
-      console.log("Invalid.\nMaaf saya tidak bisa mengeja namanya")
-   }
-}
+   if(name?.length > 0 && name.length < 20) return "Hallo", name
 
+   if(name?.length >= 20) return "Panjang Umur Yang Mulia", name
+
+   return "Invalid. Maaf saya tidak bisa mengeja namanya"
+}
 
 function validation (int){
    return int >= 0 && Number.isInteger(int) ? true : false;
 }
 
-
 function userAge(age, valid){
-   const category = "Anda adalah golongan usia" 
-   
-   if(!valid(age)){
-      console.log(category, "invalid age")
-      return
-   }
-   if(age <= 17){
-      console.log( category, "dibawah umur" )
-      return
-   }
-   if(age <= 29){
-      console.log(category, "young adult")
-      return
-   }
-   if(age <= 60){
-      console.log(category, "dewasa")
-      return
-   }
-   if(age > 60){
-      console.log(category, "tua")
-      return
-   }
-}
+   if(!valid(age)) return "invalid age"
 
+   if(age <= 17) return  "dibawah umur" 
+  
+   if (age <= 29) return "young adult"
+
+   if(age <= 60) return "dewasa"
+
+   if (age > 60) return "tua"
+}
 
 function userCheck(user){
-   if(typeof user !== "object" || user === null){
-      console.log("Saya tidak bisa membaca data anda") 
-      return
-   } 
+   if(typeof user !== "object" || user === null) return "Saya tidak bisa membaca data anda"
 
-   userName(user.name)
-   userAge(user.age, validation)
+   const x = userName(user.name)
+   const y = userAge(user.age, validation)
+   return x + " Anda adalah golongan usia " + y
 }
 
-userCheck({name: "jokowi", age :20})
-userCheck({name: "prabowo"})
-userCheck({name:""})
-userCheck(null)
-userCheck(10)
-userCheck(true)
-userCheck(undefined)
-userCheck({})
-userCheck("")
+const fe = [
+   {name: "jokowi", age :20},
+   {name: "prabowo"},
+   {name:""},
+   null,
+   10,
+   true,
+   undefined,
+   {},
+   ""
+]
+
+fe.forEach((input)=>{
+   console.log(userCheck(input))
+})
+

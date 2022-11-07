@@ -5,35 +5,19 @@ function validation (int){
 function ages(age, valid){
    const category = "Anda adalah golongan usia" 
    
+   if(!valid(age)) return "invalid age"
 
-
-
-   if(!valid(age)){
-      console.log("invalid age")
-      return
-   }
-   if(age <= 17){
-      console.log( category, "dibawah umur" )
-      return
-   }
-   if (age <= 29){
-      console.log(category, "young adult")
-      return
-   }
-   if(age <= 60){
-      console.log(category, "dewasa")
-      return
-   }
-   if (age > 60){
-      console.log(category, "tua")
-      return
-   }
+   if(age <= 17) return category, "dibawah umur" 
   
+   if (age <= 29) return category, "young adult"
+
+   if(age <= 60) return category, "dewasa"
+
+   if (age > 60) return category, "tua"
 }
 
-ages(0, validation)
-ages(10, validation)
-ages("50", validation)
-ages(29.5, validation)
-ages("muda", validation)
-ages(true, validation)
+const fe = [0, 10, "50", 29.5, "muda", true]
+
+fe.forEach((input)=>{
+   console.log(ages(input, validation))
+})

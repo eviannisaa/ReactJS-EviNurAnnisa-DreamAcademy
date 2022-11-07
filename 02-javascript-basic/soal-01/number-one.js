@@ -1,17 +1,12 @@
 function names(name) {
-   if ( name.length < 20){
-      console.log("Hallo,", name)
-   }
-   else if (name.length >= 20){
-      console.log("Panjang Umur Yang mulia" , name)      
-   }
-   else {
-      console.log("Invalid.\nMaaf saya tidak bisa mengeja namanya")
-   }
+   if ( name.length < 20) return "Hallo,", name
+   
+   if (name.length >= 20) return "Panjang Umur Yang mulia" , name    
+   
+   return "Invalid.\nMaaf saya tidak bisa mengeja namanya"
 }
 
-names("John Doe")
-names("Sri Sultan Hamengkubuwono I")
-names(10)
-names(true)
-
+const fe = ["Jhon Doe", "Sri Sultan Hamengkubuwono I", 10, true]
+fe.forEach((input) => {
+   console.log (names(input))
+})

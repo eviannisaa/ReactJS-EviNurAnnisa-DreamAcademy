@@ -1,6 +1,6 @@
-let number = Math.random()
+let num = Math.random()
 
-while (number <= 0.9){
-  number = Math.random()
-  console.log(number)
+while (num <= 0.9){
+  num = Math.random()
+  console.log(num)
 }
