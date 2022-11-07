@@ -1,24 +1,10 @@
 function factorial(n){
-   // if(typeof n !== "number" || n < 0 ){
-   //    return null
-   // }
-   // else if(n==0){
-   //    return 1
-   // }
-   // else{
-   //    return factorial(n-1) * n
-   // }
-
-   if(typeof n !== "number" || n < 0 ){
-      return null
-   }
+   if(typeof n !== "number" || n < 0 ) return null
    
-   if(n==0){
-      return 1
-   }
+   if(n==0) return 1
+   
    
    return factorial(n-1) * n
-   
 }
 
 console.log(factorial(5))
