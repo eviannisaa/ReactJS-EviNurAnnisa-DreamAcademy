@@ -1,9 +1,9 @@
 function userName(name){
-   if(name?.length > 0 && name.length < 20) return "Hallo", name
+   if(name?.length > 0 && name.length < 20) return `Hallo, ${name}`
 
-   if(name?.length >= 20) return "Panjang Umur Yang Mulia", name
+   if(name?.length >= 20) return `Panjang Umur Yang mulia ${name}` 
 
-   return "Invalid. Maaf saya tidak bisa mengeja namanya"
+   return "Maaf saya tidak bisa mengeja namanya."
 }
 
 function validation (int){
@@ -27,12 +27,12 @@ function userCheck(user){
 
    const x = userName(user.name)
    const y = userAge(user.age, validation)
-   return x + " Anda adalah golongan usia " + y
+   return x + " Anda adalah golongan usia, " + y
 }
 
 const fe = [
-   {name: "jokowi", age :20},
-   {name: "prabowo"},
+   {name: "Jokowi", age :20},
+   {name: "Prabowo"},
    {name:""},
    null,
    10,

@@ -7,16 +7,16 @@ function ages(age, valid){
    
    if(!valid(age)) return "invalid age"
 
-   if(age <= 17) return category, "dibawah umur" 
+   if(age <= 17) return `${category}, dibawah umur`
   
-   if (age <= 29) return category, "young adult"
+   if (age <= 29) return `${category}, young adoult`
 
-   if(age <= 60) return category, "dewasa"
+   if(age <= 60) return `${category}, dewasa`
 
-   if (age > 60) return category, "tua"
+   if (age > 60) return `${category}, tua`
 }
 
-const fe = [0, 10, "50", 29.5, "muda", true]
+const fe = [0, 10, "50", 60, 29.5, "muda", true]
 
 fe.forEach((input)=>{
    console.log(ages(input, validation))

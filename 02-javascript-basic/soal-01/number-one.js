@@ -1,7 +1,11 @@
 function names(name) {
-   if ( name.length < 20) return "Hallo,", name
+   if ( name.length < 20) {
+      return `Hallo, ${name}`
+   } 
    
-   if (name.length >= 20) return "Panjang Umur Yang mulia" , name    
+   else if(name.length >= 20){
+      return `Panjang Umur Yang mulia ${name}` 
+   }  
    
    return "Invalid.\nMaaf saya tidak bisa mengeja namanya"
 }
