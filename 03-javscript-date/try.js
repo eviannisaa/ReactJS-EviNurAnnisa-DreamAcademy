@@ -63,5 +63,11 @@
 // console.log(isExpired)
 
 
+// const productDetails = products.map((product) => {
+//    //   const { productionDate, expiredDate } = product;
+//    //   const fProductionDate = formatDate(productionDate);
+//    //   const fExpiredDate = formatDate(expiredDate);
+//    //   const fToday = formatDate(today);
+
 
 
