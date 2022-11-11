@@ -25,12 +25,12 @@ function momentInfo(){
    const today = moment()
    // console.log(today)
    const bDate = moment(yourBirthday)
-   const bDay = moment({year:today.year(), month:bDate.month(), day:bDate.day()})
+   const bDay = moment({year:today.year(), month:bDate.month(), date:bDate.date()})
    // console.log(bDay)
 
    const age = today.diff(bDate, "year")
 
-   const dayTo = Math.ceil(bDay.diff(today, "day", true))
+   const dayTo = Math.ceil(bDay.diff(today, "day"))
 
    if( dayTo > 0 ){
       console.log(`Hallo nama ${yourName} usia anda ${age} tahun. anda berulang tahun ${dayTo} hari lagi`)
