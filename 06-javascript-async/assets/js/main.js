@@ -49,16 +49,20 @@ getUser()
 
 async function getData(){
    const array = await getUrl()
+   const res = await fetch('http://localhost:3000/users/' ) 
+   const data = await res.json()
+
       array.forEach(async(el,i) => {
-         const res = await fetch('http://localhost:3000/users/' + el.authorId) // + el.authorId
-         console.log(res)
-         const data = await res.json()
+         function fc(val){
+            return val.id == el.authorId
+         }
+         const users = data.find(fc)  
 
          const tr = document.createElement('tr')
          tr.innerHTML = `
             <td class="text-center">${i + 1}</td>
             <td><a href="./blog.html?idPost=${el.id}" class="title">${el.title}</a></td>
-            <td>${data.username}</td>
+            <td>${users.username}</td>
             <td>${el.createdAt}</td>
             <td>${el.lastModified}</td>
             <td class="text-center">${el.published ? '<i class="fa-solid fa-check text-primary"></i>':'<i class="fa-solid fa-xmark text-danger"></i>'}</td>
@@ -75,12 +79,10 @@ async function getData(){
             </td>
             `
             listPost.appendChild(tr)
-            // $(document).ready(function () {
-            //    $('#myTable').DataTable()
-            // })
-      })
-
-       
+            $(document).ready(function () {
+               $('#myTable').DataTable()
+            })
+      })     
 }
 getData()
 
