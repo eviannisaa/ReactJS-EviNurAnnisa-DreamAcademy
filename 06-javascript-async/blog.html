@@ -9,7 +9,7 @@
    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet"/>
    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-<body>
+<body class="body">
    <nav class="navbar navbar-expand-lg">
       <div class="container-fluid d-flex justify-content-end">
          <select id="blogUsers" class="form-select" style="width: 200px;" aria-label="Default select example">
@@ -20,30 +20,22 @@
 
    <div class="container mt-4 d-flex flex-column gap-lg-5">
       <h2 id="blogTitle" class="text-center"></h2>
-      <div class="by mt-lg-5 text-center">by 
+      <div class="by text-center">by 
          <span id="blogAuthor"></span>, at 
          <span id="blogPublish"></span>
       </div>
-      <img src="" alt="" style="width: 100%; height: 100vh;">
+      <img src="/assets/img/elsa2.jfif" alt="" style="width: 100%; height: 95vh;">
       <div id="blogBody"></div>
       <div>
          <h5>Comments</h5>
-         <div class="flex row gap-2 mt-3">
-            <div class="d-flex flex-row align-items-center gap-3">
-               <!-- <img id="userAvatar" src="./img/bg.jpg" alt="" class="rounded-circle" width="53px" height="50px"> -->
-               <div class="user-comment">
-                  <span id="userName"></span>
-                  &nbsp; <b>|</b> &nbsp;
-                  <span id="userCreated"></span>
-               </div>
-            </div>
-            <div id="blogComment"></div>
+         <div id="blogComment" class="flex row gap-2 mt-3">
+            
          </div>
 
          <div class="mt-5">
             <h5>Say Something</h5>
             <textarea id="blogMssComment" class="form-control" rows="10"></textarea>
-            <button id="blogSbmComment" type="button" class="btn btn-dark" style="width: 100%;" onclick="postComment()">Submit</button>    
+            <button id="blogSbmComment" type="button" class="btn btn-dark mt-2 mb-4" style="width: 100%;" onclick="postComment()">Submit</button>    
          </div>
       </div>
    </div>

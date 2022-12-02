@@ -1,47 +1,33 @@
-const listPost = document.getElementById('listPost')
-const myTable = document.getElementById('listPost')
+const myTable = document.getElementById('myTable')
 const title = document.getElementById('title')
-let users
 
-async function getData(){
-         const res = await fetch('http://localhost:3000/users/' ) // + el.authorId
-         console.log(res)
-         const data = await res.json()
-         console.log(data)
+async function getDataUser(){
+         const resUser = await fetch('http://localhost:3000/users/' ) //
+         // console.log(resUser)
+         const dataUser = await resUser.json()
 
-         users = data
+         const resPost = await fetch('http://localhost:3000/posts/' )
+         const dataPost = await resPost.json()
+         console.log(dataPost)
+
          
-         const tr = data.map(function(val){
+         const tr = dataUser.map(function(user){
+            const postTitle = dataPost.filter(function(post){
+               return post.authorId == user.id
+            }).map(function(post){
+               return post.title
+            })
+            console.log(postTitle)
             return `
             <tr>
-               <td class="text-center" id="">${val.id}</td>
-               <td>${val.username}</td>
-               <td id="title"></td>
+               <td class="text-center" id="">${user.id}</td>
+               <td>${user.username}</td>
+               <td id="title">${postTitle}</td>
             </tr>  
             `
          }).join('')
          myTable.innerHTML = tr
-         title.innerHTML = `kjsadhaks`
-         console.log(title.innerHTML)
 }
-getData()
+getDataUser()
 
-async function getTitle(){
-   const res = await fetch('http://localhost:3000/posts/' ) // + el.authorId
-   console.log(res)
-   const data = await res.json()
-   console.log(data)
-
-  
-   // titles = data
-
-   const option = data.map(function(val){
-      return `<span>${val.title}</span>`
-   }).join('')
-
-   title.innerHTML = option
-   // titles.innerHTML = option
-   // console.log(titles.innerHTML)
-}
-getTitle()
 

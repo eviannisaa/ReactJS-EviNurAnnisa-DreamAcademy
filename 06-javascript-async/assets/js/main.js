@@ -11,7 +11,7 @@ const table = document.getElementsByTagName('table')
 // date
 const now = new Date()
 const date = now.getDate()
-const month = now.getMonth() + 1
+const month = now.getMonth()
 const year = now.getFullYear()
 // time
 const time = now.getTime()
@@ -20,9 +20,11 @@ const minute = now.getMinutes()
 const second = now.getSeconds()
 
 // createdAt, lastModified, comments
-const createdAt = `${date}/${month}/${year} ${hour}:${minute}:${second}`
+const createdAt = `${date}/${month + 1}/${year} ${hour}:${minute}:${second}`
+
 // blog
-const blogCreated = `${date} ${month}st ${year}`
+arrbulan = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const blogCreated = `${arrbulan[month]} ${date} st, ${year}`
 
 const limit = 10
 
@@ -61,7 +63,7 @@ async function getData(){
             <td>${el.lastModified}</td>
             <td class="text-center">${el.published ? '<i class="fa-solid fa-check text-primary"></i>':'<i class="fa-solid fa-xmark text-danger"></i>'}</td>
             <td class="text-center">
-            <div class="d-flex column justify-content-between">
+            <div class="d-flex column gap-3 justify-content-center">
                <button class="btn btn-primary">
                   <i id="edit" class="fa-solid fa-pen-to-square" onclick="editData(${el.id})"></i>
                </button>
@@ -145,7 +147,6 @@ async function postData(){
       console.log(data)
       return
    }
-
    window.location.reload()
 }
 

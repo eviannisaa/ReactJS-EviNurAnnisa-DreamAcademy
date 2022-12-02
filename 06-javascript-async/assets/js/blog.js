@@ -1,7 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search)
 const myParam = urlParams.get("idPost")
 console.log(myParam)
-// const myName = urlParams.get("")
 
 const blogUsers = document.getElementById("blogUsers")
 const blogTitle = document.getElementById("blogTitle")
@@ -17,8 +16,23 @@ const blogComment = document.getElementById("blogComment")
 const blogMssComment = document.getElementById("blogMssComment")
 const blogSbmComment = document.getElementById("blogSbmComment")
 
+// date
+const now = new Date()
+const date = now.getDate()
+const month = now.getMonth()
+const year = now.getFullYear()
+// time
+const time = now.getTime()
+const hour = now.getHours()
+const minute = now.getMinutes()
+const second = now.getSeconds()
+
+const createdAt = `${date}/${month + 1}/${year} ${hour}:${minute}:${second}`
+
+
 let users
 let blogData
+let usernames
 let response
 
 
@@ -35,7 +49,7 @@ async function getUserList(){
    .join('')
   
    blogUsers.innerHTML = option
-   blogAuthor.innerHTML = users.find(user => user.id == blogData.authorId)?.username
+   blogAuthor.innerHTML = users.find(user => user.id == blogData?.authorId)?.username
 }
 getUserList()
 
@@ -50,93 +64,73 @@ async function getBlog(){
       console.log(users)
 
       blogTitle.innerHTML = res.title
-      blogAuthor.innerHTML = users.find(user => user.id == res.authorId)?.username
-      
       blogPublish.innerHTML = res.createdContent
       blogBody.innerHTML = res.body
-
-      console.log(res.authorId)
+      blogAuthor.innerHTML = users.find(user => user.id == res.authorId)?.username
+      // userName.innerHTML = usernames.find(userr => userr.id == res.userId)?.username
 });
 }
 getBlog()
 
 async function getCommentUrl(){
-   const res = await fetch(`http://localhost:3000/comments`)
+   const res = await fetch(`http://localhost:3000/comments?idPost=${myParam}`)
    const data = await res.json()
-   // response = json
    return data
-
-   // blogComment.innerHTML = response.comment
-      // blogMssComment.value = res.comment
 }
-getCommentUrl()
 
 async function getComment(){
    const array = await getCommentUrl()
-      array.forEach(async(el,i) => {
-         const res = await fetch('http://localhost:3000/comments/' + el.userId) // + el.authorId
-         console.log(res)
-         const data = await res.json()
+   array.forEach(async(el) => {
+      const res = await fetch (`http://localhost:3000/users/` + el.userId)
+      console.log(res)
 
-         blogComment.innerHTML = res.comment
-         userName.innerHTML = data.username
-         userCreated.innerHTML = res.createdAt
-      })  
+      const data = await res.json()
+
+      const div = document.createElement('div')
+      div.innerHTML = 
+      // style.display.block
+      `
+      <div class="d-flex flex-row align-items-center gap-3">
+         <img src="${data.avatar}" alt="" class="rounded-circle" width="53px" height="50px">
+         <div class="user-comment">
+            <span>${data.username}</span>
+                &nbsp; <b>|</b> &nbsp;
+            <span>${el.createdAt}</span>
+         </div>
+      </div>
+      <div>"${el.comment}"</div>
+      `
+      blogComment.appendChild(div)
+
+      console.log("line 95",data.avatar)
+   });
 }
 getComment()
 
+
 async function postComment(){
    const res = await fetch(`http://localhost:3000/comments/`, {
-      method: 'POST',
-      headers: {
+      method:'POST',
+      headers:{
          'Content-Type':'application/json'
       },
-      body: JSON.stringify({
+      body:JSON.stringify({
+         userId:blogUsers.value,
          comment:blogMssComment.value,
+         createdAt: createdAt,
+         idPost: myParam
       })
    })
-   const data = await res.json()
-  
-   console.log(data)
-   e.preventDefault()
-   if(!res.ok){
-      console.log(data)
-      return
-   }
-
    window.location.reload()
+
 }
-blogSbmComment.addEventListener('submit', postComment())
-console.log(blogSbmComment)
-// blogSbmComment.addEventListener('submit', (e)=>{
-//    e.preventDefault()
+blogSbmComment.addEventListener('submit',() => postComment())
 
-//    fetch(`http://localhost:3000/comments/` + authorId, {
-//       method: 'POST',
-//       headers:{
-//          'Content-Type':'application/json'
-//       },
-//       body: JSON.stringify({
-//          comment:blogMssComment.value
-//       })
-//    })
-//    .then(res => res.json())
-//    console.log(blogSbmComment)
-
-//    .then(data => {
-//       const dataArr = []
-//       dataArr.push(data) 
-//       getComment(dataArr)
-//    })
+// let promises =  [getUserList(), getBlog(), getComment()]
+// Promise.all(promises)
+// .then((result)=>{
 
 // })
-
-
-
-
-
-
-
 
 
 
