@@ -2,32 +2,37 @@ const myTable = document.getElementById('myTable')
 const title = document.getElementById('title')
 
 async function getDataUser(){
-         const resUser = await fetch('http://localhost:3000/users/' ) //
-         // console.log(resUser)
-         const dataUser = await resUser.json()
+   const resUser = await fetch('http://localhost:3000/users/' ) //
+   // console.log(resUser)
+   const dataUser = await resUser.json()
 
-         const resPost = await fetch('http://localhost:3000/posts/' )
-         const dataPost = await resPost.json()
-         console.log(dataPost)
+   console.log(dataUser)
 
-         
-         const tr = dataUser.map(function(user){
-            const postTitle = dataPost.filter(function(post){
-               return post.authorId == user.id
-            }).map(function(post){
-               return post.title
-            })
-            console.log(postTitle)
-            return `
-            <tr>
-               <td class="text-center" id="">${user.id}</td>
-               <td>${user.username}</td>
-               <td id="title">${postTitle}</td>
-            </tr>  
-            `
-         }).join('')
-         myTable.innerHTML = tr
+   const resPost = await fetch('http://localhost:3000/posts/' )
+   const dataPost = await resPost.json()
+
+
+   const tr = dataUser.map(function(user){
+      function titleId (post){
+         return  post.authorId == user.id
+      }
+      const postTitle = dataPost.filter(titleId).map(function(post){
+         return  `<a href="./blog.html?idPost=${post.id}">${post.title}</a>` //  post.title
+      })
+      console.log(postTitle)
+      return `
+         <tr>
+            <td class="text-center" id="">${user.id}</td>
+            <td>${user.username}</td>
+            <td>${postTitle}</td>
+         </tr>  
+         `
+      }).join('')
+      myTable.innerHTML = tr
 }
-getDataUser()
+getDataUser()          
+
+
+
 
 
