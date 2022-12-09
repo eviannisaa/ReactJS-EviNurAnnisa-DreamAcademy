@@ -17,7 +17,7 @@ async function getDataUser(){
          return  post.authorId == user.id
       }
       const postTitle = dataPost.filter(titleId).map(function(post){
-         return  `<a href="./blog.html?idPost=${post.id}">${post.title}</a>` //  post.title
+         return  `<a href="./blog.html?idPost=${post.id}"> ${post.title}</a>` //  post.title
       })
       console.log(postTitle)
       return `
