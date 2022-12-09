@@ -72,3 +72,10 @@ a{
    text-decoration: none;
    color: inherit;
 }
+.aUser{
+   color: white;
+   font-weight: 600;
+}
+a:hover, .aUser:hover{
+   color: rgb(0, 115, 255);
+}
