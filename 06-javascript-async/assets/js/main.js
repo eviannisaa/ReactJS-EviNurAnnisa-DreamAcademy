@@ -10,6 +10,8 @@ const table = document.getElementsByTagName('table')
 const addOrEdit = document.getElementById('addOrEdit')
 const checkbox = document.getElementById('checkbox')
 
+let titleFocus = document.getElementById('titleFocus')
+
 // date
 const now = new Date()
 const date = now.getDate()
@@ -32,6 +34,7 @@ console.log(createdAt.format(Date.now()));
 // blog
 arrbulan = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const blogCreated = `${arrbulan[month]} ${date} st, ${year}`
+
 
 
 const limit = 10
@@ -126,7 +129,7 @@ submit.addEventListener('click', async()=>{
             title:title.value,
             body:body.value,
             published:checkbox.checked,
-            lastModified:createdAt
+            lastModified:createdAt.format(Date.now())
          })
       })
 
