@@ -1,41 +1,25 @@
-const listPost = document.getElementById('listPost')
-const submit = document.getElementById('submit')
-
+const users = document.getElementById('users')
 const title = document.getElementById('title')
 const body = document.getElementById('body')
+const checkbox = document.getElementById('checkbox')
+const submit = document.getElementById('submit')
 const idPost = document.getElementById('idPost')
-const users = document.getElementById('users')
+const addOrEdit = document.getElementById('addOrEdit')
 const myTable = document.getElementById('myTable')
 const table = document.getElementsByTagName('table')
-const addOrEdit = document.getElementById('addOrEdit')
-const checkbox = document.getElementById('checkbox')
+const listPost = document.getElementById('listPost')
 
-let titleFocus = document.getElementById('titleFocus')
-
-// date
-const now = new Date()
-const date = now.getDate()
-const month = now.getMonth()
-const year = now.getFullYear()
-// time
-const time = now.getTime()
-const hour = now.getHours()
-const minute = now.getMinutes()
-const second = now.getSeconds()
-
-// createdAt, lastModified, comments
-// const createdAt = `${date}/${month + 1}/${year} ${hour}:${minute}:${second}`
-const createdAt = new Intl.DateTimeFormat("en", {
+// created, lastmodified
+const createdAt = new Intl.DateTimeFormat("en-GB", {
    timeStyle: "medium",
-   dateStyle: "short"
-});
-console.log(createdAt.format(Date.now()));
+   dateStyle: "short",
+   timeZone: "UTC"
+})
 
 // blog
-arrbulan = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const blogCreated = `${arrbulan[month]} ${date} st, ${year}`
-
-
+const blogCreated = new Intl.DateTimeFormat("en", {
+   dateStyle: "long"
+})
 
 const limit = 10
 
@@ -45,6 +29,7 @@ async function getUrl(){
    return data
 }
 
+// get User List
 async function getUser(){
    const res = await fetch(`http://localhost:3000/users`)
    const data = await res.json()
@@ -58,6 +43,7 @@ async function getUser(){
 }
 getUser()
 
+// get Data User
 async function getData(){
    const array = await getUrl()
    const res = await fetch('http://localhost:3000/users/' ) 
@@ -97,13 +83,17 @@ async function getData(){
 }
 getData()
 
+// delete Data
 async function deleteData(id){
-   await fetch(`http://localhost:3000/posts/${id}`, {
+   if (confirm('Apakah kamu ingin menghapus data ini?') == true ){
+      await fetch(`http://localhost:3000/posts/${id}`, {
       method: 'DELETE'
    })
    window.location.reload()
+   }
 }
 
+// edit Data
 async function editData(id){
    modal.style.display = "block"
 
@@ -112,11 +102,11 @@ async function editData(id){
    })
    const data = await res.json()
 
+   addOrEdit.innerHTML = 'Edit'
    title.value = data.title
    body.value = data.body
    idPost.innerHTML = data.id
    checkbox.checked = data.published
-   addOrEdit.innerHTML = 'Edit'
 }
 submit.addEventListener('click', async()=>{
    if(idPost.innerHTML){
@@ -129,17 +119,18 @@ submit.addEventListener('click', async()=>{
             title:title.value,
             body:body.value,
             published:checkbox.checked,
-            lastModified:createdAt.format(Date.now())
+            lastModified:createdAt.format(Date.now()).split(', ').join(' | ')
          })
       })
-
-   }else{
+   }
+   else{
       await postData()
       return
    }
    window.location.reload()
 })
 
+// post Data
 async function postData(){
    const res = await fetch(`http://localhost:3000/posts`, {
       method: 'POST',
@@ -149,22 +140,19 @@ async function postData(){
       body: JSON.stringify({
          title:title.value,
          body:body.value,
-         createdAt:createdAt.format(Date.now()),
-         createdContent: blogCreated,
-         lastModified:createdAt.format(Date.now()),
+         createdAt:createdAt.format(Date.now()).split(', ').join(' | '),
+         createdContent: blogCreated.format(Date.now()).split(', ').join('st, '),
+         lastModified:createdAt.format(Date.now()).split(', ').join(' | '),
          published:checkbox.checked,
          authorId:users.value
       })
    })
-   console.log(res.body)
-
    const data = await res.json()
   
    console.log(data)
    if(!res.ok){
       console.log(data)
-      return
+      return 
    }
    window.location.reload()
 }
-

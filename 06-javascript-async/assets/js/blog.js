@@ -16,26 +16,16 @@ const blogComment = document.getElementById("blogComment")
 const blogMssComment = document.getElementById("blogMssComment")
 const blogSbmComment = document.getElementById("blogSbmComment")
 
-// date
-const now = new Date()
-const date = now.getDate()
-const month = now.getMonth()
-const year = now.getFullYear()
-// time
-const time = now.getTime()
-const hour = now.getHours()
-const minute = now.getMinutes()
-const second = now.getSeconds()
-
-const createdAt = `${date}/${month + 1}/${year} ${hour}:${minute}:${second}`
-
+const createdAt = new Intl.DateTimeFormat("en-GB", {
+   timeStyle: "medium",
+   dateStyle: "short",
+   timeZone: "UTC"
+})
 
 let users
 let blogData
-let usernames
-let response
 
-
+// get User List
 async function getUserList(){
    const res = await fetch(`http://localhost:3000/users`)
    const data = await res.json()
@@ -53,6 +43,7 @@ async function getUserList(){
 }
 getUserList()
 
+// get Blog Data
 async function getBlog(){
    fetch(`http://localhost:3000/posts/${myParam}`,{
       method:'GET',
@@ -72,12 +63,14 @@ async function getBlog(){
 }
 getBlog()
 
+// get Url comment
 async function getCommentUrl(){
    const res = await fetch(`http://localhost:3000/comments?idPost=${myParam}`)
    const data = await res.json()
    return data
 }
 
+// get Comment
 async function getComment(){
    const array = await getCommentUrl()
    array.forEach(async(el) => {
@@ -107,7 +100,7 @@ async function getComment(){
 }
 getComment()
 
-
+// post Comment
 async function postComment(){
    const res = await fetch(`http://localhost:3000/comments/`, {
       method:'POST',
@@ -117,7 +110,7 @@ async function postComment(){
       body:JSON.stringify({
          userId:blogUsers.value,
          comment:blogMssComment.value,
-         createdAt: createdAt,
+         createdAt: createdAt.format(Date.now()).split(', ').join('&nbsp; '),
          idPost: myParam
       })
    })
@@ -125,12 +118,6 @@ async function postComment(){
 
 }
 blogSbmComment.addEventListener('submit',() => postComment())
-
-// let promises =  [getUserList(), getBlog(), getComment()]
-// Promise.all(promises)
-// .then((result)=>{
-
-// })
 
 
 

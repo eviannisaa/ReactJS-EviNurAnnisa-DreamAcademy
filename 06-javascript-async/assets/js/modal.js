@@ -1,30 +1,34 @@
 let modal = document.getElementById('myModal')
-let button = document.getElementById('btnAdd')
-let span = document.getElementsByClassName('close')[0]
-console.log("jashd",document.getElementById('title').value = ('')
-)
+let btnAdd = document.getElementById('btnAdd')
+let btnClose = document.getElementById('close')
 
-button.onclick = function(){
+btnAdd.onclick = function(e){
   modal.style.display = "block"
+  if(e.target == btnAdd){
+    document.getElementById('addOrEdit').innerHTML = 'Add' 
+    document.getElementById('title').focus()
+  }
 }
-span.onclick = function(){
+
+btnClose.onclick = function(e){
   modal.style.display = "none"
+  if(e.target == btnClose){
+    document.getElementById('addOrEdit').innerHTML = null
+  }
 }
 
 window.onclick = function(e){
-  if (e.target == modal) {
-    modal.style.display = "none"
-  }
-
-  if(e.target == span){
+  if(e.target == btnClose){
     document.getElementById('idPost').innerHTML = null
     document.getElementById('title').value = ''
     document.getElementById('body').value = ''
     document.getElementById('checkbox').checked = false
-    document.getElementById('addOrEdit').innerHTML = `Add`
   }
-}
 
+  // if (e.target == modal) {
+  // modal.style.display = "none"
+  // }
+}
 
 
 
