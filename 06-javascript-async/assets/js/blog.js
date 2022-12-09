@@ -19,9 +19,8 @@ const blogSbmComment = document.getElementById("blogSbmComment")
 const createdAt = new Intl.DateTimeFormat("en-GB", {
    timeStyle: "medium",
    dateStyle: "short",
-   timeZone: "UTC"
 })
-
+// console.log(createdAt.format(Date.now()).split(', ').join(' | '))
 let users
 let blogData
 

@@ -13,8 +13,8 @@ const listPost = document.getElementById('listPost')
 const createdAt = new Intl.DateTimeFormat("en-GB", {
    timeStyle: "medium",
    dateStyle: "short",
-   timeZone: "UTC"
 })
+// console.log(createdAt.format(Date.now()).split(', ').join(' | '))
 
 // blog
 const blogCreated = new Intl.DateTimeFormat("en", {
