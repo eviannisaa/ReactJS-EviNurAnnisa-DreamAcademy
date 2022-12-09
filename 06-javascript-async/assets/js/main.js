@@ -7,6 +7,8 @@ const idPost = document.getElementById('idPost')
 const users = document.getElementById('users')
 const myTable = document.getElementById('myTable')
 const table = document.getElementsByTagName('table')
+const addOrEdit = document.getElementById('addOrEdit')
+const checkbox = document.getElementById('checkbox')
 
 // date
 const now = new Date()
@@ -20,11 +22,17 @@ const minute = now.getMinutes()
 const second = now.getSeconds()
 
 // createdAt, lastModified, comments
-const createdAt = `${date}/${month + 1}/${year} ${hour}:${minute}:${second}`
+// const createdAt = `${date}/${month + 1}/${year} ${hour}:${minute}:${second}`
+const createdAt = new Intl.DateTimeFormat("en", {
+   timeStyle: "medium",
+   dateStyle: "short"
+});
+console.log(createdAt.format(Date.now()));
 
 // blog
 arrbulan = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const blogCreated = `${arrbulan[month]} ${date} st, ${year}`
+
 
 const limit = 10
 
@@ -60,7 +68,7 @@ async function getData(){
 
          const tr = document.createElement('tr')
          tr.innerHTML = `
-            <td class="text-center">${i + 1}</td>
+            <td class="text-center">${el.id}</td>
             <td><a href="./blog.html?idPost=${el.id}" class="title">${el.title}</a></td>
             <td>${users.username}</td>
             <td>${el.createdAt}</td>
@@ -104,6 +112,8 @@ async function editData(id){
    title.value = data.title
    body.value = data.body
    idPost.innerHTML = data.id
+   checkbox.checked = data.published
+   addOrEdit.innerHTML = 'Edit'
 }
 submit.addEventListener('click', async()=>{
    if(idPost.innerHTML){
@@ -119,6 +129,7 @@ submit.addEventListener('click', async()=>{
             lastModified:createdAt
          })
       })
+
    }else{
       await postData()
       return
@@ -135,13 +146,15 @@ async function postData(){
       body: JSON.stringify({
          title:title.value,
          body:body.value,
-         createdAt:createdAt,
+         createdAt:createdAt.format(Date.now()),
          createdContent: blogCreated,
-         lastModified:createdAt,
+         lastModified:createdAt.format(Date.now()),
          published:checkbox.checked,
-         authorId:users.value,
+         authorId:users.value
       })
    })
+   console.log(res.body)
+
    const data = await res.json()
   
    console.log(data)

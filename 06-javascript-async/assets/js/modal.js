@@ -1,13 +1,13 @@
-var modal = document.getElementById('myModal')
-var button = document.getElementById('btnAdd')
-var span = document.getElementsByClassName('close')[0]
+let modal = document.getElementById('myModal')
+let button = document.getElementById('btnAdd')
+let span = document.getElementsByClassName('close')[0]
 
 button.onclick = function(){
   modal.style.display = "block"
 }
-
 span.onclick = function(){
   modal.style.display = "none"
+  window.location.reload()
 }
 
 window.onclick = function(e){
@@ -15,3 +15,6 @@ window.onclick = function(e){
     modal.style.display = "none"
   }
 }
+
+
+
