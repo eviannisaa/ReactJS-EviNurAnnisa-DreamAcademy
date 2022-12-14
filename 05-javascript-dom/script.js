@@ -34,7 +34,7 @@ items.map(function(el, i){
    row.appendChild(colAct)
    todos.appendChild(row)
    
-   // console.log(el)
+   // console.log(el)new
 })
 
 myForm.addEventListener('submit', function(e) {
@@ -98,6 +98,9 @@ Array.from(btnEdit).map(function(el, i){
 
    })
 })
+
+
+
 
 
 

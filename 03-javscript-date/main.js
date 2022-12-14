@@ -36,3 +36,20 @@ const productsInfo = products.map((product) => {
 });
 
 console.log(productsInfo);
+
+var productDetailsMoment = products.map((product) => {
+  const {productionDate, expiredDate} = product
+
+  var mToday = moment(today, 'DD/MM/YYYY')
+  var mProductionDate = moment(product.productionDate, 'DD/MM/YYYY')
+  var mExpiredDate = moment(product.expiredDate, 'DD/MM/YYYY')
+  return {
+    productionDate,
+    expiredDate,
+    shelfLife : mExpiredDate.diff(mExpiredDate, 'days'),
+    age: mToday.diff(mProductionDate, 'days'),
+    expiredIn: mExpiredDate.diff(mToday, 'days'),isExpired:mExpiredDate.diff(mToday, 'days') < 0
+  }
+})
+
+console.log('product moment', productDetailsMoment)
