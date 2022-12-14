@@ -87,6 +87,7 @@ const FormComponent = () => {
  
   }
 
+  
   useEffect(() => {
     console.log("formData", formData)
   }, [formData])
@@ -118,6 +119,7 @@ const FormComponent = () => {
               value={formData.status}
               onChange={handleChange}
               className=''
+              checked={formData.status}
             />            
           </div>
         </div>
