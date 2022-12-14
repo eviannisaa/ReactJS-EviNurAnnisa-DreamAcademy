@@ -87,7 +87,6 @@ const FormComponent = () => {
  
   }
 
-  
   useEffect(() => {
     console.log("formData", formData)
   }, [formData])
@@ -116,7 +115,7 @@ const FormComponent = () => {
               type="checkbox" 
               id='status'
               name="status"
-              value={formData.status}
+              // value={formData.status}
               onChange={handleChange}
               className=''
               checked={formData.status}
